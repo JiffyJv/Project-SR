@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Random Song</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Random Song</h1>
+      <p class="sub">Any track on Spotify. No popularity ranking.</p>
+    </header>
+
+    <!-- Setup / login -->
+    <section id="setup" class="card hidden">
+      <label for="clientId">Spotify Client ID</label>
+      <input id="clientId" type="text" placeholder="Paste your Client ID" autocomplete="off" spellcheck="false">
+      <p class="hint">Add this Redirect URI in your Spotify dashboard:</p>
+      <code id="redirect"></code>
+      <button id="loginBtn" class="primary">Connect Spotify</button>
+    </section>
+
+    <!-- Main app -->
+    <section id="app" class="hidden">
+      <div id="result" class="card result hidden">
+        <img id="art" alt="Album art">
+        <div class="meta">
+          <h2 id="title"></h2>
+          <p id="artist"></p>
+          <p id="album" class="muted"></p>
+        </div>
+        <iframe id="player" title="Spotify player" height="152" allow="encrypted-media; clipboard-write" loading="lazy"></iframe>
+      </div>
+
+      <div id="empty" class="empty">
+        <p>Hit the button to find something you've never heard.</p>
+      </div>
+
+      <button id="rollBtn" class="roll" aria-label="Roll a random song">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="4"/>
+          <circle cx="8.5" cy="8.5" r="1" fill="currentColor"/>
+          <circle cx="15.5" cy="8.5" r="1" fill="currentColor"/>
+          <circle cx="12" cy="12" r="1" fill="currentColor"/>
+          <circle cx="8.5" cy="15.5" r="1" fill="currentColor"/>
+          <circle cx="15.5" cy="15.5" r="1" fill="currentColor"/>
+        </svg>
+        <span>Roll</span>
+      </button>
+      <p class="hint center">or press <kbd>Space</kbd></p>
+
+      <div id="historyWrap" class="hidden">
+        <h3>Recent rolls</h3>
+        <ul id="history"></ul>
+      </div>
+
+      <button id="logoutBtn" class="link">Disconnect</button>
+    </section>
+
+    <p id="error" class="error hidden"></p>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
